@@ -9,31 +9,31 @@ trainer = training_api.TrainingApi(training_key)
 
 # Create a new project
 print ("Creating project...")
-project = trainer.create_project("My project")
+project = trainer.create_project("My Project")
 
-##hemlock_tag = trainer.create_tag(project.id, "Hemlock")
-tennis_racket = trainer.create_tag(project.id, "tennis racket")
+hemlock_tag = trainer.create_tag(project.id, "tennis racket")
+##cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 
-base_image_url = "https://raw.githubusercontent.com/Microsoft/Cognitive-CustomVision-Windows/master/Samples/"
+base_image_url = "https://github.com/akshaynarasimhan2/vision/blob/master/microsoft%20azure/Cognitive-CustomVision-Windows-master/Samples/"
 
 print ("Adding images...")
-##for image_num in range(1,10):
-##    image_url = base_image_url + "Images/Hemlock/hemlock_{}.jpg".format(image_num)
-##    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ hemlock_tag.id ] ) ])
+for image_num in range(1,10):
+    image_url = base_image_url + "Images/Hemlock/hemlock_{}.jpg".format(image_num)
+    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ hemlock_tag.id ] ) ])
 
-for image_num in range(1,52):
-    image_url = base_image_url + "Images/tennis racket/{}.jpg".format(image_num)
-    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ tennis_racket.id ] ) ])
+##for image_num in range(1,10):
+##    image_url = base_image_url + "Images/Japanese Cherry/japanese_cherry_{}.jpg".format(image_num)
+##    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ cherry_tag.id ] ) ])
 
 
 # Alternatively, if the images were on disk in a folder called Images alongside the sample.py, then
 # they can be added by using the following:
 #
-#import os
-#hemlock_dir = "Images\\Hemlock"
-#for image in os.listdir(os.fsencode("Images\\Hemlock")):
-#    with open(hemlock_dir + "\\" + os.fsdecode(image), mode="rb") as img_data: 
-#        trainer.create_images_from_data(project.id, img_data, [ hemlock_tag.id ])
+##import os
+##hemlock_dir = "Images\\Hemlock"
+##for image in os.listdir(os.fsencode("Images\\Hemlock")):
+##    with open(hemlock_dir + "\\" + os.fsdecode(image), mode="rb") as img_data: 
+##        trainer.create_images_from_data(project.id, img_data, [ hemlock_tag.id ])
 #
 #cherry_dir = "Images\\Japanese Cherry"
 #for image in os.listdir(os.fsencode("Images\\Japanese Cherry")):
